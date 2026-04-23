@@ -15,7 +15,7 @@ public class SubjectCreateExecuteAction extends Action {
         Teacher teacher = (Teacher) session.getAttribute("user");
 
         if (teacher == null) {
-            return "login.jsp";
+        	return "SubjectList.action";
         }
 
         String name = request.getParameter("name");
