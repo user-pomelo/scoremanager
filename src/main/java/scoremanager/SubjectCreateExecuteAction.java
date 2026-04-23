@@ -25,6 +25,7 @@ public class SubjectCreateExecuteAction extends Action {
         SubjectDAO dao = new SubjectDAO();
         dao.save(subject);
 
-        return "SubjectList.action";
+        return "SubjectList.action"; //aaa
     }
 }
+
