@@ -1,5 +1,8 @@
 package scoremanager;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDAO;
@@ -14,18 +17,23 @@ public class SubjectCreateExecuteAction extends Action {
         HttpSession session = request.getSession();
         Teacher teacher = (Teacher) session.getAttribute("user");
 
-        String cd = request.getParameter("cd");
         String name = request.getParameter("name");
+        String cd = request.getParameter("cd");
+
+        Map<String, String> errors = new HashMap<>();
+
+        if (teacher == null) {
+            return "login.jsp";
+        }
 
         Subject subject = new Subject();
         subject.setCd(cd);
         subject.setName(name);
-        subject.setSchool(teacher.getSchool());
+        subject.setSchool(teacher.getSchool()); 
 
         SubjectDAO dao = new SubjectDAO();
         dao.save(subject);
 
-        return "SubjectList.action"; //aaa
+        return "subject_create_done.jsp"; 
     }
 }
-
