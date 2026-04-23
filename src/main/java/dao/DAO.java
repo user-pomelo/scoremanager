@@ -10,7 +10,8 @@ public class DAO {
     public Connection getConnection() throws Exception {
         if (ds == null) {
             InitialContext ic = new InitialContext();
-            ds = (DataSource) ic.lookup("java:/comp/env/jdbc/kaihatsu");
+            // 「java:」の後の「/」を消して、kaihatsu（sあり）に修正
+            ds = (DataSource) ic.lookup("java:comp/env/jdbc/kaihatsu");
         }
         return ds.getConnection();
     }
