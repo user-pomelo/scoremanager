@@ -15,13 +15,13 @@ public class SubjectCreateExecuteAction extends Action {
         Teacher teacher = (Teacher) session.getAttribute("user");
 
         if (teacher == null) {
-        	return "SubjectList.action";
+            return "login.jsp";
         }
 
         String name = request.getParameter("name");
         
         Subject subject = new Subject();
-        subject.setCd("S" + System.currentTimeMillis() % 1000); 
+        subject.setCd("S" + (System.currentTimeMillis() % 10000)); 
         subject.setName(name);
         subject.setSchool(teacher.getSchool()); 
 

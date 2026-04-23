@@ -5,11 +5,9 @@
     <c:param name="content">
         <section class="me-4">
             <h2 class="h3 mb-3 fw-normal">科目管理</h2>
-            
             <div class="my-3">
                 <a href="SubjectCreate.action">新規登録</a>
             </div>
-
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -28,7 +26,6 @@
                     </c:forEach>
                 </tbody>
             </table>
-
             <c:if test="${empty subjects}">
                 <p>科目が登録されていません。</p>
             </c:if>
