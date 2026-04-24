@@ -49,4 +49,60 @@ public class SubjectDAO extends DAO {
             if (connection != null) { connection.close(); }
         }
     }
+    
+ // ① 科目取得（1件）
+    public Subject get(String cd) throws Exception {
+
+        String sql = "SELECT * FROM subject WHERE cd = ?";
+
+        try (
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)
+        ) {
+
+            ps.setString(1, cd);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Subject subject = new Subject();
+                subject.setCd(rs.getString("cd"));
+                subject.setName(rs.getString("name"));
+                return subject;
+            }
+        }
+
+        return null;
+    }
+
+    // ② 更新
+    public void update(Subject subject) throws Exception {
+
+        String sql = "UPDATE subject SET name = ? WHERE cd = ?";
+
+        try (
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)
+        ) {
+
+            ps.setString(1, subject.getName());
+            ps.setString(2, subject.getCd());
+
+            ps.executeUpdate();
+        }
+    }
+
+    // ③ 削除
+    public void delete(String cd) throws Exception {
+
+        String sql = "DELETE FROM subject WHERE cd = ?";
+
+        try (
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)
+        ) {
+
+            ps.setString(1, cd);
+            ps.executeUpdate();
+        }
+    }
 }
