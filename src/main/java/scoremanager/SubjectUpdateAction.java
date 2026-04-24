@@ -44,5 +44,6 @@ public class SubjectUpdateAction extends Action {
 
         // 一覧へリダイレクト
         return "SubjectList.action";
+        //ｋｋｋｋ
     }
 }
