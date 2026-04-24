@@ -1,72 +1,48 @@
 package scoremanager;
 
-import java.io.IOException;
-
 import bean.Subject;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
+import dao.SubjectDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import tool.Action;
 
-public class SubjectUpdateAction extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-
-        try {
-            String cd = req.getParameter("cd");
-
-            SubjectDao dao = new SubjectDao();
-            Subject subject = dao.get(cd);
-
-            if (subject == null) {
-                req.setAttribute("error", "科目が存在していません");
-            } else {
-                req.setAttribute("subject", subject);
-            }
-
-            req.getRequestDispatcher("/main/subjectUpdate.jsp").forward(req, resp);
-
-        } catch (Exception e) {
-            throw new ServletException(e);
-        }
-    }
+public class SubjectUpdateAction extends Action {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        try {
-            req.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
 
-            String cd = req.getParameter("cd");
-            String name = req.getParameter("name");
+        String cd = request.getParameter("cd");
+        String name = request.getParameter("name");
 
-            SubjectDao dao = new SubjectDao();
-            Subject subject = dao.get(cd);
+        SubjectDAO dao = new SubjectDAO();
+        Subject subject = dao.get(cd);
 
-            // 存在チェック
-            if (subject == null) {
-                req.setAttribute("error", "科目が存在していません");
-                req.getRequestDispatcher("/main/subjectUpdate.jsp").forward(req, resp);
-                return;
-            }
-
-            // 未入力チェック
-            if (name == null || name.isEmpty()) {
-                req.setAttribute("subject", subject);
-                req.getRequestDispatcher("/main/subjectUpdate.jsp").forward(req, resp);
-                return;
-            }
-
-            subject.setName(name);
-            dao.update(subject);
-
-            resp.sendRedirect("SubjectList.action");
-
-        } catch (Exception e) {
-            throw new ServletException(e);
+        // 初回表示
+        if (name == null) {
+            request.setAttribute("subject", subject);
+            return "subjectUpdate.jsp";
         }
+
+        // 存在チェック
+        if (subject == null) {
+            request.setAttribute("error", "科目が存在していません");
+            return "subjectUpdate.jsp";
+        }
+
+        // 未入力チェック
+        if (name.isEmpty()) {
+            request.setAttribute("subject", subject);
+            request.setAttribute("error", "科目名を入力してください");
+            return "subjectUpdate.jsp";
+        }
+
+        // 更新処理
+        subject.setName(name);
+        dao.update(subject);
+
+        // 一覧へリダイレクト
+        return "SubjectList.action";
     }
 }
