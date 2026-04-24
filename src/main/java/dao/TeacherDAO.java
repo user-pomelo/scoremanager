@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import bean.School;
 import bean.Teacher;
 
 public class TeacherDAO extends DAO {
@@ -27,6 +28,10 @@ public class TeacherDAO extends DAO {
 	        teacher.setId(rs.getString("ID"));
 	        teacher.setPassword(rs.getString("PASSWORD"));
 	        teacher.setName(rs.getString("NAME"));
+	        
+	        School school = new School();
+            school.setCd(rs.getString("SCHOOL_CD"));
+            teacher.setSchool(school);
 	    }
 
 	    st.close();

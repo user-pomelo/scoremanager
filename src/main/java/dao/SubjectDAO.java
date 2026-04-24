@@ -79,4 +79,31 @@ public class SubjectDAO extends DAO {
             if (connection != null) { connection.close(); }
         }
     }
+        public Subject get(String cd, School school) throws Exception {
+            Subject subject = null;
+            Connection connection = getConnection();
+            PreparedStatement statement = null;
+
+            try {
+                // 特定の学校の、特定の科目コードに一致するデータを取得
+                statement = connection.prepareStatement("SELECT * FROM SUBJECT WHERE CD = ? AND SCHOOL_CD = ?");
+                statement.setString(1, cd);
+                statement.setString(2, school.getCd());
+                ResultSet rSet = statement.executeQuery();
+
+                if (rSet.next()) {
+                    subject = new Subject();
+                    subject.setCd(rSet.getString("CD"));
+                    subject.setName(rSet.getString("NAME"));
+                    subject.setSchool(school);
+                }
+            } catch (Exception e) {
+                throw e;
+            } finally {
+                if (statement != null) { statement.close(); }
+                if (connection != null) { connection.close(); }
+            }
+            return subject;
+              
+    }
 }

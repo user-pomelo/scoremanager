@@ -63,15 +63,16 @@
                 <div class="text-danger mb-3">${errorMessage}</div>
             </c:if>
 
-            
             <c:if test="${not empty students}">
                 <div class="mb-2">
-                    
                     科目：${subject.name} （${f4}回目）
                 </div>
 
+                <!-- 登録用フォーム -->
                 <form action="TestRegistExecute.action" method="post">
                     
+                    <input type="hidden" name="f1" value="${f1}">
+                    <input type="hidden" name="f2" value="${f2}">
                     <input type="hidden" name="f3" value="${f3}">
                     <input type="hidden" name="f4" value="${f4}">
 
@@ -93,8 +94,8 @@
                                     <td>${s.no}</td>       
                                     <td>${s.name}</td>     
                                     <td>
-                                        
                                         <div style="width: 200px;">
+                                            
                                             <input type="number" name="point_${s.no}" value="${s.point}" 
                                                    class="form-control" min="0" max="100">
                                             <div class="text-warning" style="font-size: 0.75rem; margin-top: 2px;">
@@ -107,7 +108,6 @@
                         </tbody>
                     </table>
 
-                    
                     <div class="mt-4">
                         <button type="submit" class="btn btn-secondary py-2 px-3">
                             登録して終了
@@ -115,7 +115,7 @@
                     </div>
                 </form>
             </c:if>
-
         </section>
     </c:param>
 </c:import>
+

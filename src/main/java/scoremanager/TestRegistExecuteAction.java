@@ -2,13 +2,12 @@ package scoremanager;
 
 import java.util.List;
 
+import bean.School;
 import bean.Student;
-import bean.Teacher;
 import dao.StudentDAO;
 import dao.TestDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class TestRegistExecuteAction extends Action {
@@ -16,16 +15,14 @@ public class TestRegistExecuteAction extends Action {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        HttpSession session = request.getSession();
-        Teacher teacher = (Teacher) session.getAttribute("user");
+        School school = new School();
+        school.setCd("tes");
 
-        // 1. JSPのhidden項目やセレクトボックスから、科目・回数・検索条件を取得
         String subjectCd = request.getParameter("f3"); // 科目コード
         String kaisuStr = request.getParameter("f4");    // 回数
-        String entYearStr = request.getParameter("f1"); // 再表示用：入学年度
-        String classNum = request.getParameter("f2");   // 再表示用：クラス
+        String entYearStr = request.getParameter("f1"); // 入学年度
+        String classNum = request.getParameter("f2");   // クラス
 
-        // 数値への変換
         int kaisu = Integer.parseInt(kaisuStr);
         int entYear = Integer.parseInt(entYearStr);
 
@@ -41,10 +38,12 @@ public class TestRegistExecuteAction extends Action {
             if (pointStr != null && !pointStr.isEmpty()) {
                 int point = Integer.parseInt(pointStr);
 
-                tDao.save(student, subjectCd, teacher.getSchool(), kaisu, point);
+                tDao.save(student, subjectCd, school, kaisu, point, classNum);
+               
             }
         }
 
         return "/scoremanager/test_regist_done.jsp";
     }
 }
+
