@@ -4,7 +4,9 @@
     <c:param name="title">得点管理システム</c:param>
     <c:param name="content">
         <section class="me-4">
-            <h2 class="h3 mb-3 fw-normal">科目情報登録</h2>
+            <h2 class="h3 mb-3 bg-secondary bg-opacity-10 py-2 px-4">
+                科目情報登録
+            </h2>
             
             <form action="SubjectCreateExecute.action" method="post">
                 <div class="mb-3">
@@ -21,7 +23,9 @@
                 
                 <div class="mt-4">
                     <button class="btn btn-primary" type="submit">登録</button>
-                    <a href="SubjectList.action" class="btn btn-secondary">戻る</a>
+                    <br>
+                    <p></p>
+                    <a href="SubjectList.action">戻る</a>
                 </div>
             </form>
         </section>

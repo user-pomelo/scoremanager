@@ -4,10 +4,13 @@
     <c:param name="title">得点管理システム</c:param>
     <c:param name="content">
         <section class="me-4">
-            <h2 class="h3 mb-3 fw-normal">科目管理</h2>
-            <div class="my-3">
-                <a href="SubjectCreate.action">新規登録</a>
-            </div>
+            <h2 class="h3 mb-3 bg-secondary bg-opacity-10 py-2 px-4">
+		        科目管理
+		    </h2>
+			<div class="my-3 d-flex justify-content-end">
+			    <a href="SubjectCreate.action">新規登録</a>
+			</div>
+
             
             <table class="table table-hover">
                 <thead>
