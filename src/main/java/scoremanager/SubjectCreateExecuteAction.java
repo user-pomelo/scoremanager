@@ -18,10 +18,11 @@ public class SubjectCreateExecuteAction extends Action {
             return "login.jsp";
         }
 
+        String cd = request.getParameter("cd");
         String name = request.getParameter("name");
         
         Subject subject = new Subject();
-        subject.setCd("S" + (System.currentTimeMillis() % 10000)); 
+        subject.setCd(cd);
         subject.setName(name);
         subject.setSchool(teacher.getSchool()); 
 
