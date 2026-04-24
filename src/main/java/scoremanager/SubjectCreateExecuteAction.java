@@ -1,5 +1,6 @@
 package scoremanager;
 
+import bean.School;
 import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDAO;
@@ -14,16 +15,20 @@ public class SubjectCreateExecuteAction extends Action {
         HttpSession session = request.getSession();
         Teacher teacher = (Teacher) session.getAttribute("user");
 
-        if (teacher == null) {
-        	return "SubjectList.action";
-        }
-
+        String cd = request.getParameter("cd");
         String name = request.getParameter("name");
         
         Subject subject = new Subject();
-        subject.setCd("S" + System.currentTimeMillis() % 1000); 
+        subject.setCd(cd);
         subject.setName(name);
-        subject.setSchool(teacher.getSchool()); 
+
+        if (teacher != null) {
+            subject.setSchool(teacher.getSchool());
+        } else {
+            School school = new School();
+            school.setCd("kum"); 
+            subject.setSchool(school);
+        }
 
         SubjectDAO dao = new SubjectDAO();
         dao.save(subject);
