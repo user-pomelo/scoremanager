@@ -50,7 +50,7 @@ public class SubjectDAO extends DAO {
             if (connection != null) { connection.close(); }
         }
     }
-    // 修正後（saveメソッドの次から最後まで）
+
     public Subject get(String cd, School school) throws Exception {
         Subject subject = null;
         Connection connection = getConnection();
@@ -91,4 +91,31 @@ public class SubjectDAO extends DAO {
             ps.executeUpdate();
         }
     }
+
+    // --- ここから追加分 ---
+    public List<Subject> filter(School school) throws Exception {
+        List<Subject> list = new ArrayList<>();
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement("SELECT * FROM SUBJECT WHERE SCHOOL_CD = ? ORDER BY CD ASC");
+            statement.setString(1, school.getCd());
+            ResultSet rSet = statement.executeQuery();
+            
+            while (rSet.next()) {
+                Subject subject = new Subject();
+                subject.setCd(rSet.getString("CD"));
+                subject.setName(rSet.getString("NAME"));
+                subject.setSchool(school);
+                list.add(subject);
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (statement != null) { statement.close(); }
+            if (connection != null) { connection.close(); }
+        }
+        return list;
+    }
 }
+
