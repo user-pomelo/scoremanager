@@ -36,16 +36,6 @@ public class StudentCreateExecuteAction extends Action {
         String entYearError = null;
 
         // 必須チェック
-        if (no == null || no.isEmpty()) {
-            noError = "このフィールドを入力してください";
-            error = true;
-        }
-
-        if (name == null || name.isEmpty()) {
-            nameError = "このフィールドを入力してください";
-            error = true;
-        }
-
         if (entYear == null) {
             entYearError = "入学年度を選択してください";
             error = true;

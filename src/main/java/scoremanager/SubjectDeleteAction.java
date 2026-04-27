@@ -23,9 +23,14 @@ public class SubjectDeleteAction extends Action {
             return "subjectDelete.jsp";
         }
 
+        // ★ 削除前に科目情報を取得しておく（完了画面で表示するため）
+        Subject subject = dao.get(cd);
+
         // 削除処理
         dao.delete(cd);
 
-        return "SubjectList.action";
+        // ★ 完了画面へ遷移
+        request.setAttribute("subject", subject);
+        return "/scoremanager/subjectDeleteDone.jsp";
     }
 }

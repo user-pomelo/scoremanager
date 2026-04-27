@@ -7,6 +7,7 @@ public class Test {
 	private int no;
 	private int point;
 	private String classNum;
+	private String subjectName;
 	
 	public String getStudentNo() {
 		return studentNo;
@@ -49,4 +50,13 @@ public class Test {
 	public void setClassNum(String classNum) {
 		this.classNum=classNum;
 	}
+	
+	public String getSubjectName() {
+	    return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+	    this.subjectName = subjectName;
+	}
+
 }

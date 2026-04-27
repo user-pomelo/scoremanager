@@ -117,5 +117,28 @@ public class SubjectDAO extends DAO {
         }
         return list;
     }
+    
+    public Subject get(String cd) throws Exception {
+        Subject subject = null;
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(
+                "SELECT * FROM SUBJECT WHERE CD = ?"
+            );
+            statement.setString(1, cd);
+            ResultSet rSet = statement.executeQuery();
+            if (rSet.next()) {
+                subject = new Subject();
+                subject.setCd(rSet.getString("CD"));
+                subject.setName(rSet.getString("NAME"));
+            }
+        } finally {
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+        }
+        return subject;
+    }
+
 }
 

@@ -47,13 +47,7 @@
                            name="no"
                            class="form-control"
                            value="${no}"
-                           placeholder="学生番号を入力してください">
-
-                    <c:if test="${not empty noError}">
-                        <div class="text-warning">
-                            ${noError}
-                        </div>
-                    </c:if>
+                           placeholder="学生番号を入力してください" required>
                 </div>
 
                 <!-- 氏名 -->
@@ -63,13 +57,7 @@
                            name="name"
                            class="form-control"
                            value="${name}"
-                           placeholder="氏名を入力してください">
-
-                    <c:if test="${not empty nameError}">
-                        <div class="text-warning">
-                            ${nameError}
-                        </div>
-                    </c:if>
+                           placeholder="氏名を入力してください" required>
                 </div>
 
                 <!-- クラス -->

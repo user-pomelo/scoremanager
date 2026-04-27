@@ -9,6 +9,9 @@ public class Student implements Serializable {
     private String classNum;
     private boolean isAttend;
     private String schoolCd;
+    private Integer point1;
+    private Integer point2;
+
 
     public String getNo() { 
     	return no;
@@ -58,5 +61,21 @@ public class Student implements Serializable {
     }
     public void setPoint(int point) {
         this.point = point;
+    }
+    
+    public Integer getPoint1() {
+        return point1;
+    }
+
+    public void setPoint1(Integer point1) {
+        this.point1 = point1;
+    }
+
+    public Integer getPoint2() {
+        return point2;
+    }
+
+    public void setPoint2(Integer point2) {
+        this.point2 = point2;
     }
 }

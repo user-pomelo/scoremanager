@@ -98,9 +98,6 @@
                                             
                                             <input type="number" name="point_${s.no}" value="${s.point}" 
                                                    class="form-control" min="0" max="100">
-                                            <div class="text-warning" style="font-size: 0.75rem; margin-top: 2px;">
-                                                0～100の範囲で入力してください
-                                            </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -113,6 +110,10 @@
                             登録して終了
                         </button>
                     </div>
+                    <c:if test="${not empty errorMessage}">
+					    <div class="text-danger mb-3">${errorMessage}</div>
+					</c:if>
+					                    
                 </form>
             </c:if>
         </section>

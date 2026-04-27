@@ -17,22 +17,18 @@ public class SubjectCreateExecuteAction extends Action {
 
         String cd = request.getParameter("cd");
         String name = request.getParameter("name");
-        
+
         Subject subject = new Subject();
         subject.setCd(cd);
         subject.setName(name);
 
-        if (teacher != null) {
-            subject.setSchool(teacher.getSchool());
-        } else {
-            School school = new School();
-            school.setCd("kum"); 
-            subject.setSchool(school);
-        }
+        School school = new School();
+        school.setCd("tes");
+        subject.setSchool(school);
 
         SubjectDAO dao = new SubjectDAO();
         dao.save(subject);
 
-        return "SubjectList.action"; 
+        return "SubjectList.action";
     }
 }

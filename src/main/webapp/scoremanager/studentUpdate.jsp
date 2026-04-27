@@ -32,19 +32,18 @@
                            readonly>
                 </div>
 
-                <!-- 氏名 -->
                 <div class="mb-3">
-    				<label class="form-label">氏名</label>
+				    <label class="form-label">氏名</label>
 				    <input type="text"
-           				name="name"
-           				class="form-control"
-           				value="${student.name}">
+				           name="name"
+				           class="form-control"
+				           value="${student.name}"
+				           required>
 				    <c:if test="${not empty nameError}">
-        				<div class="text-warning">
-            				${nameError}
-        				</div>
-    				</c:if>
+				        <div class="text-danger">${nameError}</div>
+				    </c:if>
 				</div>
+
 				
                 <!-- クラス -->
                 <div class="mb-3">

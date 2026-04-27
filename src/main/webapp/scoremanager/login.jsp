@@ -25,7 +25,7 @@
 			<form action="Login.action" method="post">
 				
 				<div class="mb-3">
-				    <label class="form-label"></label>
+				    <label class="form-label">ID</label>
 				    <input type="text"
 				           name="login"
 				           class="form-control"
@@ -37,7 +37,7 @@
 				</div>
 				
 				<div class="mb-3">
-				    <label class="form-label"></label>
+				    <label class="form-label">パスワード</label>
 				    <input type="password"
 				           name="password"
 				           id="password"
@@ -56,6 +56,7 @@
 				        </label>
 				    </div>
 				</div>
+
 
 
 				<script>
