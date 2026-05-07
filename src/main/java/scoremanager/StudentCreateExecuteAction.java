@@ -53,11 +53,18 @@ public class StudentCreateExecuteAction extends Action {
             request.setAttribute("nameError", nameError);
             request.setAttribute("entYearError", entYearError);
 
+            // 入力値を戻す
+            request.setAttribute("no", no);
+            request.setAttribute("name", name);
+            request.setAttribute("entYear", entYearStr);
+            request.setAttribute("classNum", classNum);
+
             request.setAttribute("entYears", dao.getEntYears());
             request.setAttribute("classNums", dao.getClassNums());
 
             return "/scoremanager/studentCreate.jsp";
         }
+
 
         // 登録処理
         Student s = new Student();
