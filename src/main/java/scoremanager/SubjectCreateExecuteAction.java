@@ -2,22 +2,42 @@ package scoremanager;
 
 import bean.School;
 import bean.Subject;
-import bean.Teacher;
 import dao.SubjectDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class SubjectCreateExecuteAction extends Action {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        Teacher teacher = (Teacher) session.getAttribute("user");
 
         String cd = request.getParameter("cd");
         String name = request.getParameter("name");
 
+        SubjectDAO dao = new SubjectDAO();
+
+        boolean error = false;
+        String cdError = null;
+
+        // 重複チェック
+        if (dao.exists(cd)) {
+            cdError = "科目コードが重複しています";
+            error = true;
+        }
+
+        if (error) {
+            // 入力値を戻す
+            request.setAttribute("cd", cd);
+            request.setAttribute("name", name);
+            request.setAttribute("cdError", cdError);
+
+            // エラーメッセージを渡す
+            request.setAttribute("cdError", cdError);
+
+            return "/scoremanager/subject_create.jsp";
+        }
+
+        // 正常登録処理
         Subject subject = new Subject();
         subject.setCd(cd);
         subject.setName(name);
@@ -26,7 +46,6 @@ public class SubjectCreateExecuteAction extends Action {
         school.setCd("tes");
         subject.setSchool(school);
 
-        SubjectDAO dao = new SubjectDAO();
         dao.save(subject);
 
         return "SubjectList.action";

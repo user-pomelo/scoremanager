@@ -40,15 +40,21 @@
                     </c:if>
                 </div>
 
-                <!-- 学生番号 -->
-                <div class="mb-3">
-                    <label class="form-label">学生番号</label>
-                    <input type="text"
-                           name="no"
-                           class="form-control"
-                           value="${no}"
-                           placeholder="学生番号を入力してください" required>
-                </div>
+				<!-- 学生番号 -->
+				<div class="mb-3">
+				    <label class="form-label">学生番号</label>
+				    <input type="text"
+				           name="no"
+				           class="form-control"
+				           value="${no}"
+				           placeholder="学生番号を入力してください" required>
+				
+				    <c:if test="${not empty noError}">
+				        <div class="text-warning">
+				            ${noError}
+				        </div>
+				    </c:if>
+				</div>
 
                 <!-- 氏名 -->
                 <div class="mb-3">

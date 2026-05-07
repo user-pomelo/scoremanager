@@ -140,5 +140,30 @@ public class SubjectDAO extends DAO {
         return subject;
     }
 
+    public boolean exists(String cd) throws Exception {
+        boolean exists = false;
+
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+
+        try {
+            statement = connection.prepareStatement(
+                "SELECT CD FROM SUBJECT WHERE CD = ?"
+            );
+            statement.setString(1, cd);
+
+            ResultSet rSet = statement.executeQuery();
+            if (rSet.next()) {
+                exists = true;
+            }
+
+        } finally {
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+        }
+
+        return exists;
+    }
+
 }
 

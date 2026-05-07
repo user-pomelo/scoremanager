@@ -27,7 +27,4 @@
         科目管理
     </a>
     
-    <a href="ClassList.action">
-    	クラス管理
-    </a>
 </div>
