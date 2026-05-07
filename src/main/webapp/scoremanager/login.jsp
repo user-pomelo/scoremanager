@@ -27,13 +27,15 @@
 				<div class="mb-3">
 				    <label class="form-label">ID</label>
 				    <input type="text"
-				           name="login"
-				           class="form-control"
-				           required
-				           maxlength="10"
-				           placeholder="ID"
-				           inputmode="latin"
-				           style="ime-mode: disabled;">
+				       name="login"
+				       class="form-control"
+				       required
+				       maxlength="10"
+				       placeholder="ID"
+				       value="${login}"
+				       inputmode="latin"
+				       style="ime-mode: disabled;">
+
 				</div>
 				
 				<div class="mb-3">

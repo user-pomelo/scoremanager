@@ -8,25 +8,28 @@ import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class LoginAction extends Action {
-	public String execute(
-			HttpServletRequest request, HttpServletResponse response
-			) throws Exception {
-		HttpSession session=request.getSession();
-		
-		String login=request.getParameter("login");
-		String password=request.getParameter("password");
-		TeacherDAO dao=new TeacherDAO();
-		Teacher teacher=dao.search(login, password);
-		
-		if (teacher != null) {
-			session.setAttribute("teacher", teacher);
-			return "menu.jsp";
-		}
+    public String execute(
+            HttpServletRequest request, HttpServletResponse response
+            ) throws Exception {
 
-		request.setAttribute("errorMessage",
-			"ログインに失敗しました。IDまたはパスワードが間違っています。");
-		
-		return "login-error.jsp";
-	}
+        HttpSession session = request.getSession();
 
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+
+        TeacherDAO dao = new TeacherDAO();
+        Teacher teacher = dao.search(login, password);
+
+        if (teacher != null) {
+            session.setAttribute("teacher", teacher);
+            return "menu.jsp";
+        }
+
+        request.setAttribute("login", login);
+
+        request.setAttribute("errorMessage",
+            "ログインに失敗しました。IDまたはパスワードが間違っています。");
+
+        return "login.jsp";
+    }
 }
