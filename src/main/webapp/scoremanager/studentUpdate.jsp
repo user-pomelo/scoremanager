@@ -36,6 +36,7 @@
 				    <label class="form-label">氏名</label>
 				    <input type="text"
 				           name="name"
+				           maxlength="30"
 				           class="form-control"
 				           value="${student.name}"
 				           required>

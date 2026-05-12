@@ -47,6 +47,7 @@
 				           name="no"
 				           class="form-control"
 				           value="${no}"
+				           maxlength="10"
 				           placeholder="学生番号を入力してください" required>
 				
 				    <c:if test="${not empty noError}">
@@ -63,6 +64,7 @@
                            name="name"
                            class="form-control"
                            value="${name}"
+                           maxlength="30"
                            placeholder="氏名を入力してください" required>
                 </div>
 
