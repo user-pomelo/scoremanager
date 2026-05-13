@@ -33,7 +33,8 @@
                 <div class="mb-3">
                     <label class="form-label">科目名</label>
                     <input type="text" name="name" class="form-control"
-                           value="${subject.name}" required>
+                           value="${subject.name}" required
+                           maxlength="20">
                 </div>
 
                 <div class="mt-4">
