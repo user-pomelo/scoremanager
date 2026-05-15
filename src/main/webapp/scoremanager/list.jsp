@@ -115,8 +115,8 @@
                 </c:when>
 
                 <c:otherwise>
-                    <div class="alert alert-warning">
-                        該当する学生情報がありません。
+                    <div>
+                        学生情報が存在しませんでした
                     </div>
                 </c:otherwise>
 

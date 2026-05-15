@@ -74,9 +74,7 @@
 				</script>
 
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary px-4">
-						ログイン
-					</button>
+					<input type="submit" value="ログイン" class="btn btn-primary px-4">
 				</div>
 
 			</form>

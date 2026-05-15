@@ -12,9 +12,9 @@
                 学生情報変更
             </h2>
 
-            <p class="p-3 bg-success bg-opacity-25">
-                学生情報の変更が完了しました。
-            </p>
+			<p class="text-center mb-4 p-2 bg-success bg-opacity-50 text-dark">
+					変更が完了しました
+			</p>
 
             <a href="StudentList.action">学生一覧へ</a>
 

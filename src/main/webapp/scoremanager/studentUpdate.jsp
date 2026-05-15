@@ -60,12 +60,13 @@
                 </div>
 
                 <!-- 在学中 -->
-                <div class="form-check mb-3">
-                    <input type="checkbox" name="isAttend"
-                           class="form-check-input"
-                           ${student.isAttend ? 'checked' : ''}>
-                    <label class="form-check-label">在学中</label>
-                </div>
+                <div class="mb-3 d-flex align-items-center">
+				    <label for="isAttend" class="me-2">在学中</label>
+				    <input type="checkbox" id="isAttend" name="isAttend"
+				           class="form-check-input"
+				           ${student.isAttend ? 'checked' : ''}>
+				</div>
+
 
                 <button type="submit" class="btn btn-primary">
                     変更

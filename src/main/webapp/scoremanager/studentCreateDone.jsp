@@ -18,22 +18,23 @@
             </h2>
             
             <!-- 完了メッセージ -->
-			<p class="mb-4 p-3 bg-success bg-opacity-10 text-dark">
+			<p class="mb-4 p-3 bg-success bg-opacity-50 text-dark">
     			学生の登録が完了しました。
 			</p>
 
             <!-- リンク -->
-            <div class="d-grid gap-2 col-6">
+            <div class="d-flex gap-3">
+			
+			    <a href="StudentCreate.action">
+			        戻る
+			    </a>
+			
+			    <a href="StudentList.action">
+			        学生一覧
+			    </a>
+			
+			</div>
 
-                <a href="StudentCreate.action">
-                    戻る
-                </a>
-
-                <a href="StudentList.action">
-                    学生一覧
-                </a>
-
-            </div>
 
         </section>
 
