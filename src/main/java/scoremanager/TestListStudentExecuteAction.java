@@ -46,6 +46,12 @@ public class TestListStudentExecuteAction extends Action {
         // 学生情報取得
         Student student = sDao.get(f4);
 
+        // 学生が存在しない場合
+        if (student == null) {
+            request.setAttribute("errorStudent", "成績情報が存在しませんでした");
+            return "/scoremanager/test_list.jsp";
+        }
+
         // 学生の全成績を取得
         List<Test> tests = tDao.getListByStudent(school, f4);
 

@@ -85,7 +85,7 @@
 			            <input type="text" name="f4" class="form-control"
 			                   maxlength="10" placeholder="学生番号を入力してください" value="${f4}" required>
 			        </div>
-			
+			        
 			        <!-- 検索ボタン -->
 			        <div class="col-auto">
 			            <button class="btn btn-secondary btn-sm">検索</button>
@@ -98,6 +98,10 @@
 			<p class="mt-4 text-info">
 			    科目情報を選択または学生情報を入力して検索ボタンをクリックしてください
 			</p>
+			
+			<c:if test="${not empty errorStudent}">
+				<div class="text-danger mb-2">${errorStudent}</div>
+			</c:if>
 
 
         </section>
