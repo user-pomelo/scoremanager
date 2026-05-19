@@ -18,9 +18,9 @@
 			    <div class="row mb-2 align-items-end">
 			
 			        <!-- 科目情報ラベル -->
-			        <div class="col-auto fw-bold">
+			        <p class="col-auto fw-bold">
 			            科目情報
-			        </div>
+			        </p>>
 			
 			        <!-- 入学年度 -->
 			        <div class="col-auto">
@@ -75,9 +75,9 @@
 			    <div class="row mb-2 align-items-end">
 			
 			        <!-- 学生情報ラベル -->
-			        <div class="col-auto fw-bold">
+			        <p class="col-auto fw-bold">
 			            学生情報
-			        </div>
+			        </p>
 			
 			        <!-- 学生番号 -->
 			        <div class="col-auto">
