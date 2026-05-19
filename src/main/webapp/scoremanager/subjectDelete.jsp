@@ -20,7 +20,7 @@
                     <input type="hidden" name="cd" value="${subject.cd}">
                     <input type="hidden" name="delete" value="true">
 
-                    <button class="btn btn-danger" type="submit">削除</button>
+                    <input class="btn btn-danger" type="submit" value="削除">
                 </form>
             </c:if>
 
