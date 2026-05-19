@@ -103,7 +103,6 @@
 				<div class="text-danger mb-2">${errorStudent}</div>
 			</c:if>
 
-
         </section>
         <!-- 科目別成績一覧 -->
 		<c:if test="${not empty students}">
