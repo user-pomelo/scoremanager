@@ -64,7 +64,7 @@
                            name="name"
                            class="form-control"
                            value="${name}"
-                           maxlength="30"
+                           maxlength="10"
                            placeholder="氏名を入力してください" required>
                 </div>
 
