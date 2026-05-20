@@ -44,6 +44,6 @@ public class SubjectCreateExecuteAction extends Action {
 
         dao.save(subject);
 
-        return "SubjectList.action";
+        return "/scoremanager/subject_complete.jsp";
     }
 }
