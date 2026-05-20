@@ -20,7 +20,7 @@
 			        <!-- 科目情報ラベル -->
 			        <p class="col-auto fw-bold">
 			            科目情報
-			        </p>>
+			        </p>
 			
 			        <!-- 入学年度 -->
 			        <div class="col-auto">
@@ -101,6 +101,10 @@
 			
 			<c:if test="${not empty errorStudent}">
 				<div class="text-danger mb-2">${errorStudent}</div>
+			</c:if>
+			
+			<c:if test="${not empty errorSubjectNotFound}">
+				<div class="text-warning mb-2">${errorSubjectNotFound}</div>
 			</c:if>
 
         </section>

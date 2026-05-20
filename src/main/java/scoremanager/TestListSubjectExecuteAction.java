@@ -50,11 +50,17 @@ public class TestListSubjectExecuteAction extends Action {
             return "/scoremanager/test_list.jsp";
         }
 
-        // 検索処理
+     // 検索処理
         int entYear = Integer.parseInt(f1);
         List<Student> students = sDao.filter(entYear, f2, true);
 
-        //点数をセットする（1回目・2回目）
+        // 学生が存在しない場合
+        if (students == null || students.isEmpty()) {
+            request.setAttribute("errorSubjectNotFound", "学生情報が存在しませんでした");
+            return "/scoremanager/test_list.jsp";
+        }
+
+        // 点数セット
         for (Student s : students) {
             Integer p1 = tDao.getPoint(s.getNo(), f3, school, 1);
             s.setPoint1(p1);
@@ -69,5 +75,7 @@ public class TestListSubjectExecuteAction extends Action {
         request.setAttribute("subject", subject);
 
         return "/scoremanager/test_list.jsp";
+        
     }
+
 }
