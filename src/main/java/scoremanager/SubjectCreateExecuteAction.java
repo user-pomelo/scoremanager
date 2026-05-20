@@ -19,25 +19,21 @@ public class SubjectCreateExecuteAction extends Action {
         boolean error = false;
         String cdError = null;
 
-        // 重複チェック
         if (dao.exists(cd)) {
             cdError = "科目コードが重複しています";
             error = true;
         }
 
         if (error) {
-            // 入力値を戻す
-            request.setAttribute("cd", cd);
+        	request.setAttribute("cd", cd);
             request.setAttribute("name", name);
             request.setAttribute("cdError", cdError);
 
-            // エラーメッセージを渡す
             request.setAttribute("cdError", cdError);
 
             return "/scoremanager/subject_create.jsp";
         }
 
-        // 正常登録処理
         Subject subject = new Subject();
         subject.setCd(cd);
         subject.setName(name);

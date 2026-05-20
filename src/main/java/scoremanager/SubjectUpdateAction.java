@@ -19,31 +19,26 @@ public class SubjectUpdateAction extends Action {
 	        SubjectDAO dao = new SubjectDAO();
 	        Subject subject = dao.get(cd);
 
-	        // 初回表示
 	        if (name == null) {
 	            request.setAttribute("subject", subject);
 	            return "subjectUpdate.jsp";
 	        }
 
-	        // 存在チェック
 	        if (subject == null) {
 	            request.setAttribute("error", "科目が存在していません");
 	            return "subjectUpdate.jsp";
 	        }
 
-	        // 未入力チェック
 	        if (name.isEmpty()) {
 	            request.setAttribute("subject", subject);
 	            request.setAttribute("error", "科目名を入力してください");
 	            return "subjectUpdate.jsp";
 	        }
 
-	        // 更新処理
 	        subject.setName(name);
 	        dao.update(subject);
 
-	        // ★ 完了画面へ遷移
-	        request.setAttribute("subject", subject);  // 完了画面で表示したい場合
+	        request.setAttribute("subject", subject);  
 	        return "/scoremanager/subjectUpdateDone.jsp";
 	    }
 

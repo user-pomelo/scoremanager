@@ -92,7 +92,6 @@ public class SubjectDAO extends DAO {
         }
     }
 
-    // --- ここから追加分 ---
     public List<Subject> filter(School school) throws Exception {
         List<Subject> list = new ArrayList<>();
         Connection connection = getConnection();
